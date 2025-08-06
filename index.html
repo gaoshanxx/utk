@@ -5,11 +5,12 @@
   <title>東大国語研究会　京都校</title>
   <style>
     body {
-            background: url('bg.webp') no-repeat center center / cover;
+      background: 
+        linear-gradient(135deg, #f2e9e1 0%, #c9e7ff 100%),
+        url('bg.webp') no-repeat center center / cover;
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(135deg, #f2e9e1 0%, #c9e7ff 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -66,29 +67,28 @@
       font-weight: 500;
     }
     .logo-box {
-  display: inline-block;
-  background-color: #e60012; /* Japanese vivid red */
-  padding: 0.5em 1em;
-  border-radius: 0px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
-
-.logo-box h1 {
-  color: #fff;
-  font-family: 'Segoe UI', 'Hiragino Kaku Gothic Pro', 'Meiryo', Arial, sans-serif;
-  font-size: 1.8em;
-  font-weight: 900;
-  margin: 0;
-  letter-spacing: 0.08em;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
+      display: inline-block;
+      background-color: #e60012; /* Japanese vivid red */
+      padding: 0.5em 1em;
+      border-radius: 0px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .logo-box h1 {
+      color: #fff;
+      font-family: 'Segoe UI', 'Hiragino Kaku Gothic Pro', 'Meiryo', Arial, sans-serif;
+      font-size: 1.8em;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 0.08em;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="logo-box">
-  <h1>東大国語研究会京都校</h1>
-</div>
+      <h1>東大国語研究会京都校</h1>
+    </div>
     <button id="checkBtn">現在地を確認する</button>
     <div id="message"></div>
     <div id="error"></div>
@@ -125,9 +125,11 @@
           const dist = haversineDistance(latitude, longitude, KYOTO_STATION.lat, KYOTO_STATION.lng);
           if (dist <= RADIUS_METERS) {
             document.getElementById('message').textContent = 'あなたは今京都駅にいますね。ようこそ、東大国語研究会京都校へ。';
+            document.getElementById('gpsNotice').style.display = 'none'; // Hide when accepted
           } else {
             document.getElementById('message').textContent = '';
             document.getElementById('error').textContent = '申し訳ありませんが、京都駅付近ではありません。';
+            document.getElementById('gpsNotice').style.display = ''; // Show when not accepted
           }
         },
         function(err) {
