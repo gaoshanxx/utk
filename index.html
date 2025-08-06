@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tokyo Station Proximity Message</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    #message { font-size: 1.5em; color: #2d4a6e; margin-top: 2em; }
+    #error { color: #b30000; margin-top: 2em; }
+  </style>
+</head>
+<body>
+  <h1>Tokyo Station Proximity Checker</h1>
+  <button id="checkBtn">Check My Location</button>
+  <div id="message"></div>
+  <div id="error"></div>
+  <script>
+    // Tokyo Station coordinates
+    const TOKYO_STATION = { lat: 35.681236, lng: 139.767125 };
+    // Proximity radius in meters
+    const RADIUS_METERS = 300;
+
+    function haversineDistance(lat1, lon1, lat2, lon2) {
+      const toRad = x => x * Math.PI / 180;
+      const R = 6371000; // Earth radius in meters
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return R * c;
+    }
+
+    document.getElementById('checkBtn').onclick = function() {
+      document.getElementById('message').textContent = '';
+      document.getElementById('error').textContent = '';
+      if (!navigator.geolocation) {
+        document.getElementById('error').textContent = 'Geolocation is not supported by your browser.';
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          const { latitude, longitude } = pos.coords;
+          const dist = haversineDistance(latitude, longitude, TOKYO_STATION.lat, TOKYO_STATION.lng);
+          if (dist <= RADIUS_METERS) {
+            document.getElementById('message').textContent = 'You are near Tokyo Station!';
+          } else {
+            document.getElementById('message').textContent = '';
+            document.getElementById('error').textContent = 'Sorry, you are not near Tokyo Station.';
+          }
+        },
+        function(err) {
+          document.getElementById('error').textContent = 'Unable to retrieve your location. ' +
+            (err.message || '');
+        }
+      );
+    };
+  </script>
+</body>
+</html>
