@@ -88,7 +88,7 @@
     <div class="logo-box">
       <h1>東大国語研究会京都校</h1>
     </div>
-    <button id="checkBtn">現在地を確認する</button>
+    <button id="checkBtn">京都駅にいるので入室します（現在地を確認する）</button>
     <div id="message"></div>
     <div id="error"></div>
     <div id="gpsNotice">ご利用の前に、GPS（位置情報設定）をオンにしてください。</div>
@@ -123,7 +123,7 @@
           const { latitude, longitude } = pos.coords;
           const dist = haversineDistance(latitude, longitude, KYOTO_STATION.lat, KYOTO_STATION.lng);
           if (dist <= RADIUS_METERS) {
-            document.getElementById('message').textContent = 'あなたは今京都駅にいますね。ようこそ、東大国語研究会京都校へ。';
+            document.getElementById('message').textContent = 'あなたは今京都駅にいますね。ようこそ、東大国語研究会京都校へ。<a href="https://forms.gle/nFEWn12jjFkrmJ4o6">東大現代文２０２５四予備校採点</a>';
             document.getElementById('gpsNotice').style.display = 'none'; // Hide when accepted
           } else {
             document.getElementById('message').textContent = '';
