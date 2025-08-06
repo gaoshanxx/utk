@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>東大国語研究会京都校</title>
+  <title>東大国語研究会　京都校</title>
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -30,8 +30,8 @@
       letter-spacing: 0.05em;
     }
     #gpsNotice {
-      color: #b30000;
-      font-size: 1em;
+      color: black;
+      font-size: 0.5em;
       font-weight: 600;
       margin-bottom: 1em;
     }
@@ -68,14 +68,14 @@
   display: inline-block;
   background-color: #e60012; /* Japanese vivid red */
   padding: 0.5em 1em;
-  border-radius: 12px;
+  border-radius: 0px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
 
 .logo-box h1 {
   color: #fff;
   font-family: 'Segoe UI', 'Hiragino Kaku Gothic Pro', 'Meiryo', Arial, sans-serif;
-  font-size: 2.2em;
+  font-size: 1.8em;
   font-weight: 900;
   margin: 0;
   letter-spacing: 0.08em;
@@ -85,13 +85,13 @@
 </head>
 <body>
   <div class="container">
-    <div id="gpsNotice">ご利用の前に、GPS（位置情報設定）をオンにしてください。</div>
     <div class="logo-box">
   <h1>東大国語研究会京都校</h1>
 </div>
     <button id="checkBtn">現在地を確認する</button>
     <div id="message"></div>
     <div id="error"></div>
+    <div id="gpsNotice">ご利用の前に、GPS（位置情報設定）をオンにしてください。</div>
   </div>
   <script>
     // 京都駅の座標
