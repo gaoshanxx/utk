@@ -64,12 +64,31 @@
       font-size: 1em;
       font-weight: 500;
     }
+    .logo-box {
+  display: inline-block;
+  background-color: #e60012; /* Japanese vivid red */
+  padding: 0.5em 1em;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.logo-box h1 {
+  color: #fff;
+  font-family: 'Segoe UI', 'Hiragino Kaku Gothic Pro', 'Meiryo', Arial, sans-serif;
+  font-size: 2.2em;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
   </style>
 </head>
 <body>
   <div class="container">
     <div id="gpsNotice">ご利用の前に、GPS（位置情報設定）をオンにしてください。</div>
-    <h1>東大国語研究会京都校</h1>
+    <div class="logo-box">
+  <h1>東大国語研究会京都校</h1>
+</div>
     <button id="checkBtn">現在地を確認する</button>
     <div id="message"></div>
     <div id="error"></div>
