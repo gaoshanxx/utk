@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>東大国語研究会　京都校</title>
+  <title>東大国語研究会　みそきん東京駅店前校</title>
   <style>
     body {
       background: 
@@ -86,18 +86,18 @@
 <body>
   <div class="container">
     <div class="logo-box">
-      <h1>東大国語研究会京都校</h1>
+      <h1>東大国語研究会みそきん東京駅店前校</h1>
     </div>
-    <button id="checkBtn">京都駅にいるので入室します（現在地を確認する）</button>
+    <button id="checkBtn">みそきん東京駅店前にいるので入室します（現在地を確認する）</button>
     <div id="message"></div>
     <div id="error"></div>
     <div id="gpsNotice">ご利用の前に、GPS（位置情報設定）をオンにしてください。</div>
   </div>
   <script>
-    // 京都駅の座標
-    const KYOTO_STATION = { lat: 34.985849, lng: 135.758766 };
+    // みそきん東京駅店前（東京駅）の座標
+    const TOKYO_STATION = { lat: 35.681236, lng: 139.767125 };
     // 半径（メートル）
-    const RADIUS_METERS = 6000;
+    const RADIUS_METERS = 600;
 
     function haversineDistance(lat1, lon1, lat2, lon2) {
       const toRad = x => x * Math.PI / 180;
@@ -121,13 +121,13 @@
       navigator.geolocation.getCurrentPosition(
         function(pos) {
           const { latitude, longitude } = pos.coords;
-          const dist = haversineDistance(latitude, longitude, KYOTO_STATION.lat, KYOTO_STATION.lng);
+          const dist = haversineDistance(latitude, longitude, TOKYO_STATION.lat, TOKYO_STATION.lng);
           if (dist <= RADIUS_METERS) {
-            document.getElementById('message').innerHTML = 'あなたは今京都駅にいますね。ようこそ、東大国語研究会京都校へ。京都校限定のテキストを購入するには以下から。<a href="https://forms.gle/nFEWn12jjFkrmJ4o6">東大現代文２０２５四予備校採点</a>';
+            document.getElementById('message').innerHTML = 'あなたは今みそきん東京駅店前にいますね。ようこそ、東大国語研究会みそきん東京駅店前校へ。限定テキストを購入できます。<a href="https://forms.gle/nFEWn12jjFkrmJ4o6">東大現代文２０２５四予備校採点</a>';
             document.getElementById('gpsNotice').style.display = 'none'; // Hide when accepted
           } else {
             document.getElementById('message').textContent = '';
-            document.getElementById('error').textContent = '申し訳ありませんが、京都駅付近ではありません。';
+            document.getElementById('error').textContent = '申し訳ありませんが、みそきん東京駅店前付近ではありません。';
             document.getElementById('gpsNotice').style.display = ''; // Show when not accepted
           }
         },
